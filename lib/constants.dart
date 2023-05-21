@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import "package:get_storage/get_storage.dart";
 
 String kLogoPath = "assets/images/logo.png";
 //todo: fix fonts
@@ -33,4 +32,4 @@ TextStyle kTextStyle16Bold = TextStyle(fontSize: 16, fontWeight: FontWeight.bold
 TextStyle kTextStyle14 = TextStyle(fontSize: 14, fontFamily: chooseFontFamily);
 TextStyle kTextStyle14Bold = TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: chooseFontFamily);
 
-Duration kTimeOutDuration = const Duration(seconds: 10);
+Duration kTimeOutDuration = const Duration(seconds: 15);

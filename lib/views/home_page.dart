@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(width: 5),
             Text(
               "Ecommerce",
-              style: kTextStyle22Bold,
+              style: kTextStyle22Bold.copyWith(color: cs.onSurface),
             ),
           ],
         ),
@@ -60,6 +60,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               hC.refreshAllProducts();
               //todo: make a notification page when back-end is ready
+              //todo: flutter local notifications
             },
           ),
           IconButton(

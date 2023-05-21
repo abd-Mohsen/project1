@@ -60,6 +60,7 @@ class ForgotPasswordPage1 extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 25),
+                //todo: when i press confirm and it times out the otp is sent but i cant go to otp screen
                 GetBuilder<ForgotPasswordController>(
                   builder: (con) => AuthButton(
                     widget: con.isLoading1

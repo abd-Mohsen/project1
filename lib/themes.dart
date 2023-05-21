@@ -20,9 +20,12 @@ class MyThemes {
       onSurface: Color(0xffD7D7D7),
     ),
     appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0xff1e1e1e),
-        foregroundColor: Color(0xffD7D7D7),
-        systemOverlayStyle: SystemUiOverlayStyle.dark),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Color(0xff1e1e1e), // <-- SEE HERE
+        statusBarIconBrightness: Brightness.light,
+        // statusBarBrightness: Brightness.dark,
+      ),
+    ),
   );
 
   static ThemeData myLightMode = ThemeData.light().copyWith(
@@ -40,6 +43,11 @@ class MyThemes {
       onSurface: Colors.black,
     ),
     appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white, foregroundColor: Colors.black, systemOverlayStyle: SystemUiOverlayStyle.light),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Colors.white, // <-- SEE HERE
+        statusBarIconBrightness: Brightness.dark,
+        // statusBarBrightness: Brightness.light,
+      ),
+    ),
   );
 }

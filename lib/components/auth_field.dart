@@ -24,6 +24,7 @@ class AuthField extends StatelessWidget {
   final String? Function(String?) validator;
   final void Function(String) onChanged;
 
+  //todo:create a prefix button for showing password
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -11,7 +11,6 @@ import '../constants.dart';
 class ForgotPasswordOTPScreen extends StatelessWidget {
   const ForgotPasswordOTPScreen({super.key});
 
-  //todo: make resend button with loading indicator
   @override
   Widget build(BuildContext context) {
     ColorScheme cs = Theme.of(context).colorScheme;
@@ -87,11 +86,12 @@ class ForgotPasswordOTPScreen extends StatelessWidget {
                 ),
               ),
               GetBuilder<ForgotPasswordController>(
+                //todo: fix button stretch when loading
                 builder: (con) => ElevatedButton(
                     onPressed: () {
                       con.resendOtp();
                     },
-                    child: con.isLoadingOtp
+                    child: !con.isLoadingOtp
                         ? Text(
                             "resend otp".tr,
                             style: kTextStyle20.copyWith(color: cs.onPrimary),

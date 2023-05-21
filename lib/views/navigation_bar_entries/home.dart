@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
           flex: 15,
           child: Padding(
             padding: const EdgeInsets.only(bottom: 15),
-            child: GetBuilder<HomeController>(builder:(con) {
+            child: GetBuilder<HomeController>(builder: (con) {
               if (hC.isLoadingProducts) {
                 return Center(
                   child: Column(
@@ -68,7 +68,7 @@ class Home extends StatelessWidget {
                   ),
                 );
               } else {
-                if (!hC.isFetched.value) {
+                if (!hC.isFetched) {
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +84,7 @@ class Home extends StatelessWidget {
                     ),
                   );
                 }
-                List<ProductModel> newestProductsList = hC.copyOfProductsList;
+                List<ProductModel> newestProductsList = hC.productsList;
                 newestProductsList.sort((a, b) => b.rating.rate.compareTo(a.rating.rate));
                 return ListView(
                   children: [

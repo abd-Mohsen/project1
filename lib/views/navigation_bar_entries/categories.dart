@@ -27,8 +27,8 @@ class Categories extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
-            child: Obx(() {
-              if (hC.isLoadingProducts.value) {
+            child: GetBuilder<HomeController>(builder: (con) {
+              if (hC.isLoadingProducts) {
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +41,7 @@ class Categories extends StatelessWidget {
                   ),
                 );
               } else {
-                if (!hC.isFetched.value) {
+                if (!hC.isFetched) {
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

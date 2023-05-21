@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              if (hC.isFetched.value) {
+              if (hC.isFetched) {
                 showSearch(
                   context: context,
                   delegate: SearchPage(
@@ -185,7 +185,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  if (hC.isFetched.value) {
+                  if (hC.isFetched) {
                     Get.to(() => const CartPage());
                   }
                 },

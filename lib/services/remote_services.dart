@@ -7,8 +7,11 @@ import 'package:project1/models/user_model.dart';
 
 //https://fakestoreapi.com/products
 //https://api.escuelajs.co/api/v1/products
+// 10.0.2.2
+// 192.168.1.40
+
 class RemoteServices {
-  static const String _hostUrl = "http://10.0.2.2:8000/api";
+  static const String _hostUrl = "http://192.168.1.40:8000/api";
 
   static var client = http.Client();
 
@@ -36,11 +39,11 @@ class RemoteServices {
     }
   }
 
-  static Future<String?> createUser(String email, String password) async {
+  static Future<String?> createUser(String email, String password, String name) async {
     var response = await client.post(
       Uri.parse("$_hostUrl/register"),
       body: jsonEncode({
-        "name": "abd",
+        "name": name,
         "email": email,
         "password": password,
         "password_confirmation": password,

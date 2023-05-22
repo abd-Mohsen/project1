@@ -17,7 +17,6 @@ void main() async {
 //todo: responsive design
 //todo: optimize routes and controllers
 //todo: localize all text
-//todo: change status bar color
 //todo: change fonts for both ar and en
 //todo: fix stutter when changing themes
 

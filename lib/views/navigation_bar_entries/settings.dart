@@ -25,9 +25,9 @@ class Settings extends StatelessWidget {
       children: [
         const SizedBox(height: 15),
         isLoggedIn
-            ? Obx(
-                () {
-                  if (hC.isLoadingUser.value) {
+            ? GetBuilder<HomeController>(
+                builder: (con) {
+                  if (con.isLoadingUser) {
                     return Center(
                       child: ListTile(
                         tileColor: cs.surface,
@@ -52,7 +52,7 @@ class Settings extends StatelessWidget {
                         ),
                         title: Padding(
                           padding: const EdgeInsets.only(top: 8.0),
-                          child: Text("${hC.currentUser.value.firstName} ${hC.currentUser.value.lastName}",
+                          child: Text("${con.currentUser.firstName} ${con.currentUser.lastName}",
                               style: kTextStyle30.copyWith(color: cs.onSurface)),
                         ),
                         subtitle: Padding(
@@ -85,7 +85,7 @@ class Settings extends StatelessWidget {
                                   ),
                                   title: Text("email".tr),
                                   subtitle: Text(
-                                    hC.currentUser.value.email,
+                                    con.currentUser.email,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                   ),
@@ -127,7 +127,7 @@ class Settings extends StatelessWidget {
                                             ),
                                             title: Text("please enter your password first:".tr),
                                             content: Form(
-                                              key: hC.settingsFormKey,
+                                              key: con.settingsFormKey,
                                               child: AuthField(
                                                 textController: password,
                                                 keyboardType: TextInputType.emailAddress,
@@ -139,7 +139,7 @@ class Settings extends StatelessWidget {
                                                   return validateInput(password.text, 4, 100, "password");
                                                 },
                                                 onChanged: (val) {
-                                                  if (hC.buttonPressed) hC.settingsFormKey.currentState!.validate();
+                                                  if (con.buttonPressed) con.settingsFormKey.currentState!.validate();
                                                 },
                                               ),
                                             ),
@@ -150,9 +150,9 @@ class Settings extends StatelessWidget {
                                                   () => AuthButton(
                                                     onTap: () {
                                                       hideKeyboard(context);
-                                                      hC.confirmPassword(password.text);
+                                                      con.confirmPassword(password.text);
                                                     },
-                                                    widget: hC.isLoadingConfirmPassword.value
+                                                    widget: con.isLoadingConfirmPassword.value
                                                         ? SpinKitThreeBounce(color: cs.onPrimary, size: 24)
                                                         : Text(
                                                             "submit".tr,

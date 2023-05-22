@@ -100,7 +100,7 @@ class RegisterPage extends StatelessWidget {
                   AuthField(
                     textController: password,
                     keyboardType: TextInputType.text,
-                    obscure: true, //todo: make a prefix button to show password
+                    obscure: true,
                     hintText: "password".tr,
                     label: "password",
                     iconData: Icons.lock_outline,
@@ -115,7 +115,7 @@ class RegisterPage extends StatelessWidget {
                   AuthField(
                     textController: rePassword,
                     keyboardType: TextInputType.text,
-                    obscure: true, //todo: make a prefix button to show re-password
+                    obscure: true,
                     hintText: "re enter password".tr,
                     label: "",
                     iconData: Icons.lock_outline,
@@ -131,6 +131,7 @@ class RegisterPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: IntlPhoneField(
                       //todo: find a way to not let user write weird names
+                      //todo: validator isn't working well with phone field
                       validator: (val) {
                         return validateInput(phone.text, 9, 10, "phone");
                       },

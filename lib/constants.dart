@@ -32,4 +32,4 @@ TextStyle kTextStyle16Bold = TextStyle(fontSize: 16, fontWeight: FontWeight.bold
 TextStyle kTextStyle14 = TextStyle(fontSize: 14, fontFamily: chooseFontFamily);
 TextStyle kTextStyle14Bold = TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: chooseFontFamily);
 
-Duration kTimeOutDuration = const Duration(seconds: 15);
+Duration kTimeOutDuration = const Duration(seconds: 25);

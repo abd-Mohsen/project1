@@ -87,11 +87,12 @@ class RegisterOTPScreen extends StatelessWidget {
                 ),
               ),
               GetBuilder<RegisterController>(
+                //todo: fix stretched button
                 builder: (con) => ElevatedButton(
                     onPressed: () {
                       con.resendOtp();
                     },
-                    child: con.isLoadingOtp
+                    child: !con.isLoadingOtp
                         ? Text(
                             "resend otp".tr,
                             style: kTextStyle20.copyWith(color: cs.onPrimary),

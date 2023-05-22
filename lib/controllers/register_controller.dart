@@ -19,13 +19,14 @@ class RegisterController extends GetxController {
     update();
   }
 
-  Future register(String email, String password, String name, String lastName, String phone, String address) async {
+  //todo: cant get to otp page after timed out (email is already taken)
+  Future register(String email, String password, String fName, String lName, String phone, String address) async {
     buttonPressed = true;
     bool isValid = registerFormKey.currentState!.validate();
     if (isValid) {
       toggleLoadingRegister(true);
       try {
-        _registerToken = (await RemoteServices.createUser(email, password).timeout(kTimeOutDuration))!;
+        _registerToken = (await RemoteServices.createUser(email, password, "$fName $lName").timeout(kTimeOutDuration))!;
         _verifyUrl = (await RemoteServices.sendRegisterOtp(_registerToken).timeout(kTimeOutDuration))!;
         Get.to(() => const RegisterOTPScreen());
       } on TimeoutException {

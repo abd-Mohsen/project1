@@ -79,12 +79,14 @@ class HomeController extends GetxController {
   //--------------------------------------------------------------------------------
   //for fetching current user from server
 
-  Rx<UserModel> currentUser = UserModel(id: 0, email: "email", firstName: "first", lastName: "last", avatar: "").obs;
-  RxBool isLoadingUser = true.obs;
+  late UserModel _currentUser;
+  UserModel get currentUser => _currentUser;
+  bool _isLoadingUser = true;
+  bool get isLoadingUser => _isLoadingUser;
 
   void getCurrentUser() async {
     try {
-      currentUser.value = (await RemoteServices.fetchCurrentUser(_getStorage.read("token")))!;
+      _currentUser = (await RemoteServices.fetchCurrentUser(_getStorage.read("token")))!;
     } catch (e) {
       _getStorage.remove("token");
       Get.offAll(() => LoginPage()); //todo:
@@ -93,7 +95,7 @@ class HomeController extends GetxController {
         middleText: "please login again",
       );
     } finally {
-      isLoadingUser.value = false;
+      _isLoadingUser = false;
     }
   }
 
@@ -142,6 +144,8 @@ class HomeController extends GetxController {
   //--------------------------------------------------------------------------------
   //for search history
 
+  //todo: show "product is no longer available" if user clicked on a deleted product in search history
+  //todo: and remove it from history
   final Map<int, ProductModel> _searchHistoryMap = {};
   Map<int, ProductModel> get searchHistoryMap => _searchHistoryMap;
   //used a map to insure that products with same id wont duplicate after refreshing the list

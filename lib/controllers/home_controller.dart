@@ -39,7 +39,7 @@ class HomeController extends GetxController {
   bool _isFetched = true;
   bool get isFetched => _isFetched;
   List<ProductModel> get productsList => _productsList;
-  toggleLoadingAndFetchedProducts(bool loading, bool fetched) {
+  void toggleLoadingAndFetchedProducts(bool loading, bool fetched) {
     _isLoadingProducts = loading;
     _isFetched = fetched;
     update();
@@ -190,7 +190,8 @@ class HomeController extends GetxController {
   //---------------------------------------------------------------------------------
   //for edit profile
 
-  RxBool isLoadingConfirmPassword = false.obs;
+  bool _isLoadingConfirmPassword = false;
+  bool get isLoadingConfirmPassword => _isLoadingConfirmPassword;
 
   GlobalKey<FormState> settingsFormKey = GlobalKey<FormState>();
 
@@ -199,9 +200,8 @@ class HomeController extends GetxController {
   //todo:
   void confirmPassword(String password) async {
     buttonPressed = true;
-    bool flag = settingsFormKey.currentState!.validate();
-    if (flag) {
-      isLoadingConfirmPassword.value = true;
+    if (settingsFormKey.currentState!.validate()) {
+      _isLoadingConfirmPassword = true;
       Timer(const Duration(seconds: 4), () {
         if (password == "12345") {
           //go to page
@@ -222,7 +222,7 @@ class HomeController extends GetxController {
             margin: const EdgeInsets.only(bottom: 50),
           ));
         }
-        isLoadingConfirmPassword.value = false;
+        _isLoadingConfirmPassword = false;
       });
     }
   }

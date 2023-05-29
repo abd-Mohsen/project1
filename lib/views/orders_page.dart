@@ -16,6 +16,12 @@ class OrdersPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: cs.background,
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: cs.onSurface),
+              onPressed: () {
+                Get.back();
+              },
+            ),
             title: Text(
               "my orders".tr,
               style: kTextStyle24.copyWith(color: cs.onSurface),

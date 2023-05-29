@@ -11,7 +11,6 @@ import '../controllers/register_controller.dart';
 class RegisterOTPScreen extends StatelessWidget {
   const RegisterOTPScreen({super.key});
 
-  //todo: make resend button with loading indicator
   @override
   Widget build(BuildContext context) {
     ColorScheme cs = Theme.of(context).colorScheme;
@@ -88,16 +87,20 @@ class RegisterOTPScreen extends StatelessWidget {
               ),
               GetBuilder<RegisterController>(
                 //todo: fix stretched button
-                builder: (con) => ElevatedButton(
+                builder: (con) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton(
                     onPressed: () {
                       con.resendOtp();
                     },
-                    child: !con.isLoadingOtp
+                    child: con.isLoadingOtp
                         ? Text(
                             "resend otp".tr,
                             style: kTextStyle20.copyWith(color: cs.onPrimary),
                           )
-                        : SpinKitThreeBounce(color: cs.onPrimary, size: 20)),
+                        : SpinKitThreeBounce(color: cs.onPrimary, size: 20),
+                  ),
+                ),
               ),
             ],
           ),

@@ -19,6 +19,12 @@ class CartPage extends StatelessWidget {
             style: kTextStyle24Bold.copyWith(color: cs.onSurface),
           ),
           backgroundColor: cs.surface,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: cs.onSurface),
+            onPressed: () {
+              Get.back();
+            },
+          ),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),

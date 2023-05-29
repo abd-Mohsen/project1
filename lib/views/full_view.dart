@@ -43,6 +43,12 @@ class FullView extends StatelessWidget {
             ),
           ),
         ],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: cs.onSurface),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
       body: SafeArea(
         child: GetBuilder<FullViewController>(

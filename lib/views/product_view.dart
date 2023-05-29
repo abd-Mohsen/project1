@@ -86,7 +86,7 @@ class ProductView extends StatelessWidget {
                     },
                   ),
                   SpeedDialChild(
-                    closeSpeedDialOnPressed: false,
+                    closeSpeedDialOnPressed: true,
                     child: !con.cart.containsKey(product.id)
                         ? const Icon(Icons.add_shopping_cart)
                         : const Icon(Icons.remove_shopping_cart),
@@ -137,6 +137,12 @@ class ProductView extends StatelessWidget {
           title: Text(
             "product details".tr,
             style: kTextStyle26.copyWith(color: cs.onSurface),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: cs.onSurface),
+            onPressed: () {
+              Get.back();
+            },
           ),
         ),
         body: SingleChildScrollView(

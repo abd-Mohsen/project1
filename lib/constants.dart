@@ -24,6 +24,7 @@ TextStyle kTextStyle24Bold = TextStyle(fontSize: 24, fontWeight: FontWeight.bold
 TextStyle kTextStyle22 = TextStyle(fontSize: 22, fontFamily: chooseFontFamily);
 TextStyle kTextStyle22Bold = TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: chooseFontFamily);
 TextStyle kTextStyle20 = TextStyle(fontSize: 20, fontFamily: chooseFontFamily);
+TextStyle kTextStyle20Bold = TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: chooseFontFamily);
 TextStyle kTextStyle18 = TextStyle(fontSize: 18, fontFamily: chooseFontFamily);
 TextStyle kTextStyle18Bold = TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: chooseFontFamily);
 TextStyle kTextStyle17 = TextStyle(fontSize: 17, fontFamily: chooseFontFamily);

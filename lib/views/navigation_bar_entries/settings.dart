@@ -146,13 +146,13 @@ class Settings extends StatelessWidget {
                                             actions: [
                                               Padding(
                                                 padding: const EdgeInsets.only(bottom: 16.0),
-                                                child: Obx(
-                                                  () => AuthButton(
+                                                child: GetBuilder<HomeController>(
+                                                  builder: (con) => AuthButton(
                                                     onTap: () {
                                                       hideKeyboard(context);
                                                       con.confirmPassword(password.text);
                                                     },
-                                                    widget: con.isLoadingConfirmPassword.value
+                                                    widget: con.isLoadingConfirmPassword
                                                         ? SpinKitThreeBounce(color: cs.onPrimary, size: 24)
                                                         : Text(
                                                             "submit".tr,

@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(width: 5),
             Text(
               "Ecommerce",
-              style: kTextStyle22Bold.copyWith(color: cs.onSurface),
+              style: kTextStyle20Bold.copyWith(color: cs.onSurface),
             ),
           ],
         ),

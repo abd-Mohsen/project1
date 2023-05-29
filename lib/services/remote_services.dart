@@ -11,7 +11,7 @@ import 'package:project1/models/user_model.dart';
 // 192.168.1.40
 
 class RemoteServices {
-  static const String _hostUrl = "http://192.168.1.40:8000/api";
+  static const String _hostUrl = "http://10.0.2.2:8000/api";
 
   static var client = http.Client();
 

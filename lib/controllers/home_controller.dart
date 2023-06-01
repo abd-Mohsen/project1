@@ -32,13 +32,13 @@ class HomeController extends GetxController {
   //--------------------------------------------------------------------------------
   //for fetching products from server
 
-  // RxList<ProductModel> productsList = <ProductModel>[].obs; //todo
   late List<ProductModel> _productsList;
+  List<ProductModel> get productsList => _productsList;
   bool _isLoadingProducts = true;
   bool get isLoadingProducts => _isLoadingProducts;
   bool _isFetched = true;
   bool get isFetched => _isFetched;
-  List<ProductModel> get productsList => _productsList;
+
   void toggleLoadingAndFetchedProducts(bool loading, bool fetched) {
     _isLoadingProducts = loading;
     _isFetched = fetched;
@@ -146,18 +146,18 @@ class HomeController extends GetxController {
 
   //todo: show "product is no longer available" if user clicked on a deleted product in search history
   //todo: and remove it from history
-  final Map<int, ProductModel> _searchHistoryMap = {};
-  Map<int, ProductModel> get searchHistoryMap => _searchHistoryMap;
+  final Map<int, ProductModel> _searchHistory = {};
+  Map<int, ProductModel> get searchHistory => _searchHistory;
   //used a map to insure that products with same id wont duplicate after refreshing the list
 
   void addToSearchHistory(ProductModel product) {
-    _searchHistoryMap[product.id] = product;
+    _searchHistory[product.id] = product;
     update();
     saveSearchHistoryInLocalStorage();
   }
 
   void removeFromHistory(ProductModel product) {
-    _searchHistoryMap.remove(product.id);
+    _searchHistory.remove(product.id);
     update();
     saveSearchHistoryInLocalStorage();
   }
@@ -166,13 +166,13 @@ class HomeController extends GetxController {
     if (_getStorage.read("search history") != null) {
       List<ProductModel> mapAsList = productModelFromJson(_getStorage.read("search history"));
       for (ProductModel productModel in mapAsList) {
-        _searchHistoryMap[productModel.id] = productModel;
+        _searchHistory[productModel.id] = productModel;
       }
     }
   }
 
   void saveSearchHistoryInLocalStorage() {
-    List<ProductModel> mapAsList = _searchHistoryMap.entries.map((entry) => entry.value).toList();
+    List<ProductModel> mapAsList = _searchHistory.entries.map((entry) => entry.value).toList();
     _getStorage.write("search history", productModelToJson(mapAsList));
   }
 
@@ -194,8 +194,14 @@ class HomeController extends GetxController {
   bool get isLoadingConfirmPassword => _isLoadingConfirmPassword;
 
   GlobalKey<FormState> settingsFormKey = GlobalKey<FormState>();
-
   bool buttonPressed = false;
+
+  bool _passwordVisible = false;
+  bool get passwordVisible => _passwordVisible;
+  void togglePasswordVisibility(bool value) {
+    _passwordVisible = value;
+    update();
+  }
 
   //todo:
   void confirmPassword(String password) async {

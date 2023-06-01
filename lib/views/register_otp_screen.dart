@@ -93,7 +93,7 @@ class RegisterOTPScreen extends StatelessWidget {
                     onPressed: () {
                       con.resendOtp();
                     },
-                    child: con.isLoadingOtp
+                    child: !con.isLoadingOtp
                         ? Text(
                             "resend otp".tr,
                             style: kTextStyle20.copyWith(color: cs.onPrimary),

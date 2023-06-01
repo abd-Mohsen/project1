@@ -50,7 +50,7 @@ class ForgotPasswordPage1 extends StatelessWidget {
                     obscure: false,
                     hintText: "email".tr,
                     label: "email",
-                    iconData: Icons.email_outlined,
+                    prefixIconData: Icons.email_outlined,
                     validator: (val) {
                       return validateInput(email.text, 4, 100, "email");
                     },

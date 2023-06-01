@@ -142,6 +142,20 @@ class ForgotPasswordController extends GetxController {
     update();
   }
 
+  bool _passwordVisible = false;
+  bool get passwordVisible => _passwordVisible;
+  void togglePasswordVisibility(bool value) {
+    _passwordVisible = value;
+    update();
+  }
+
+  bool _rePasswordVisible = false;
+  bool get rePasswordVisible => _rePasswordVisible;
+  void toggleRePasswordVisibility(bool value) {
+    _rePasswordVisible = value;
+    update();
+  }
+
   void resetPass(String password) async {
     button2Pressed = true;
     bool isValid = secondFormKey.currentState!.validate();

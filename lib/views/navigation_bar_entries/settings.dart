@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -128,19 +129,27 @@ class Settings extends StatelessWidget {
                                             title: Text("please enter your password first:".tr),
                                             content: Form(
                                               key: con.settingsFormKey,
-                                              child: AuthField(
-                                                textController: password,
-                                                keyboardType: TextInputType.emailAddress,
-                                                obscure: true,
-                                                hintText: "password",
-                                                label: "",
-                                                iconData: Icons.password,
-                                                validator: (val) {
-                                                  return validateInput(password.text, 4, 100, "password");
-                                                },
-                                                onChanged: (val) {
-                                                  if (con.buttonPressed) con.settingsFormKey.currentState!.validate();
-                                                },
+                                              child: GetBuilder<HomeController>(
+                                                builder: (con) => AuthField(
+                                                  textController: password,
+                                                  keyboardType: TextInputType.text,
+                                                  obscure: !con.passwordVisible,
+                                                  hintText: "password".tr,
+                                                  label: "password",
+                                                  prefixIconData: Icons.lock_outline,
+                                                  suffixIconData: con.passwordVisible
+                                                      ? CupertinoIcons.eye_slash
+                                                      : CupertinoIcons.eye,
+                                                  onIconPress: () {
+                                                    con.togglePasswordVisibility(!con.passwordVisible);
+                                                  },
+                                                  validator: (val) {
+                                                    return validateInput(password.text, 4, 50, "password");
+                                                  },
+                                                  onChanged: (val) {
+                                                    if (con.buttonPressed) con.settingsFormKey.currentState!.validate();
+                                                  },
+                                                ),
                                               ),
                                             ),
                                             actions: [

@@ -13,11 +13,17 @@ class LoginController extends GetxController {
   bool get isLoading => _isLoading;
 
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-
   bool buttonPressed = false;
 
   void toggleLoading(bool value) {
     _isLoading = value;
+    update();
+  }
+
+  bool _passwordVisible = false;
+  bool get passwordVisible => _passwordVisible;
+  void togglePasswordVisibility(bool value) {
+    _passwordVisible = value;
     update();
   }
 

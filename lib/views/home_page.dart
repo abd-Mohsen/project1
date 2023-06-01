@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                     items: hC.productsList,
                     searchLabel: "Search products".tr,
                     suggestion: GetBuilder<HomeController>(builder: (con) {
-                      return hC.searchHistoryMap.isEmpty
+                      return hC.searchHistory.isEmpty
                           ? Center(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -88,9 +88,9 @@ class HomePage extends StatelessWidget {
                           : ListView.builder(
                               reverse: true,
                               shrinkWrap: true,
-                              itemCount: con.searchHistoryMap.length,
+                              itemCount: con.searchHistory.length,
                               itemBuilder: (context, i) {
-                                final entry = con.searchHistoryMap.entries.elementAt(i);
+                                final entry = con.searchHistory.entries.elementAt(i);
                                 return ListTile(
                                   onTap: () {
                                     Get.to(ProductView(product: entry.value, heroTag: ""));
@@ -153,7 +153,7 @@ class HomePage extends StatelessWidget {
                         title: Text(product.title),
                         onTap: () {
                           Get.off(ProductView(product: product, heroTag: ""));
-                          if (hC.searchHistoryMap.containsKey(product.id)) {
+                          if (hC.searchHistory.containsKey(product.id)) {
                             hC.removeFromHistory(product);
                           }
                           hC.addToSearchHistory(product);

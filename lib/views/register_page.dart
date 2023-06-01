@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -57,7 +58,7 @@ class RegisterPage extends StatelessWidget {
                     obscure: false,
                     hintText: "first name".tr,
                     label: "",
-                    iconData: Icons.person_outline,
+                    prefixIconData: Icons.person_outline,
                     validator: (val) {
                       return validateInput(fName.text, 4, 15, "username");
                     },
@@ -72,7 +73,7 @@ class RegisterPage extends StatelessWidget {
                     obscure: false,
                     hintText: "last name(optional)".tr,
                     label: "",
-                    iconData: Icons.person,
+                    prefixIconData: Icons.person,
                     validator: (val) {
                       return null;
                       //return validateInput(lastName.text, 4, 15, "username");
@@ -88,7 +89,7 @@ class RegisterPage extends StatelessWidget {
                     obscure: false,
                     hintText: "email".tr,
                     label: "email",
-                    iconData: Icons.email_outlined,
+                    prefixIconData: Icons.email_outlined,
                     validator: (val) {
                       return validateInput(email.text, 4, 100, "email");
                     },
@@ -97,34 +98,46 @@ class RegisterPage extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 10),
-                  AuthField(
-                    textController: password,
-                    keyboardType: TextInputType.text,
-                    obscure: true,
-                    hintText: "password".tr,
-                    label: "password",
-                    iconData: Icons.lock_outline,
-                    validator: (val) {
-                      return validateInput(password.text, 4, 50, "password");
-                    },
-                    onChanged: (val) {
-                      if (rC.buttonPressed) rC.registerFormKey.currentState!.validate();
-                    },
+                  GetBuilder<RegisterController>(
+                    builder: (con) => AuthField(
+                      textController: password,
+                      keyboardType: TextInputType.text,
+                      obscure: !con.passwordVisible,
+                      hintText: "password".tr,
+                      label: "password",
+                      prefixIconData: Icons.lock_outline,
+                      suffixIconData: con.passwordVisible ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                      onIconPress: () {
+                        con.togglePasswordVisibility(!con.passwordVisible);
+                      },
+                      validator: (val) {
+                        return validateInput(password.text, 4, 50, "password");
+                      },
+                      onChanged: (val) {
+                        if (con.buttonPressed) con.registerFormKey.currentState!.validate();
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10),
-                  AuthField(
-                    textController: rePassword,
-                    keyboardType: TextInputType.text,
-                    obscure: true,
-                    hintText: "re enter password".tr,
-                    label: "",
-                    iconData: Icons.lock_outline,
-                    validator: (val) {
-                      return validateInput(password.text, 4, 50, "password");
-                    },
-                    onChanged: (val) {
-                      if (rC.buttonPressed) rC.registerFormKey.currentState!.validate();
-                    },
+                  GetBuilder<RegisterController>(
+                    builder: (con) => AuthField(
+                      textController: rePassword,
+                      keyboardType: TextInputType.text,
+                      obscure: !con.rePasswordVisible,
+                      hintText: "re enter password".tr,
+                      label: "",
+                      prefixIconData: Icons.lock_outline,
+                      suffixIconData: con.rePasswordVisible ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                      onIconPress: () {
+                        con.toggleRePasswordVisibility(!con.rePasswordVisible);
+                      },
+                      validator: (val) {
+                        return validateInput(rePassword.text, 4, 50, "password");
+                      },
+                      onChanged: (val) {
+                        if (con.buttonPressed) con.registerFormKey.currentState!.validate();
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Padding(
@@ -134,6 +147,9 @@ class RegisterPage extends StatelessWidget {
                       //todo: validator isn't working well with phone field
                       validator: (val) {
                         return validateInput(phone.text, 9, 10, "phone");
+                      },
+                      onChanged: (val) {
+                        if (rC.buttonPressed) rC.registerFormKey.currentState!.validate();
                       },
                       style: kTextStyle14.copyWith(color: Colors.black),
                       dropdownTextStyle: kTextStyle14.copyWith(color: Colors.black),
@@ -160,9 +176,9 @@ class RegisterPage extends StatelessWidget {
                     obscure: false,
                     hintText: "address".tr,
                     label: "",
-                    iconData: Icons.location_pin,
+                    prefixIconData: Icons.location_pin,
                     validator: (val) {
-                      return validateInput(fName.text, 4, 15, "address");
+                      return validateInput(address.text, 4, 15, "address");
                     },
                     onChanged: (val) {
                       if (rC.buttonPressed) rC.registerFormKey.currentState!.validate();
@@ -183,7 +199,7 @@ class RegisterPage extends StatelessWidget {
                           con.register(email.text, password.text, fName.text, lName.text, phone.text, address.text);
                           hideKeyboard(context);
                         } else {
-                          Get.defaultDialog(middleText: "not matched");
+                          Get.defaultDialog(middleText: "passwords are not matched");
                         }
                       },
                     ),

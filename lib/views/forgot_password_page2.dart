@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,7 @@ import '../components/auth_field.dart';
 import '../constants.dart';
 import '../controllers/forgot_password_controller.dart';
 
-//todo: recheck if field errors are working properly
+//todo: recheck if field validators are working properly
 
 ///if otp is correct , set a new password for the account with the email entered earlier
 class ForgotPasswordPage2 extends StatelessWidget {
@@ -44,34 +45,46 @@ class ForgotPasswordPage2 extends StatelessWidget {
                     style: kTextStyle16.copyWith(color: Get.isDarkMode ? cs.onBackground : Colors.grey[700]),
                   ),
                   const SizedBox(height: 25),
-                  AuthField(
-                    textController: newPassword,
-                    keyboardType: TextInputType.text,
-                    obscure: true, //todo: make a button to show password
-                    hintText: "enter a new password".tr,
-                    label: "password",
-                    iconData: Icons.lock_outline,
-                    validator: (val) {
-                      return validateInput(newPassword.text, 4, 50, "password");
-                    },
-                    onChanged: (val) {
-                      if (fC.button2Pressed) fC.secondFormKey.currentState!.validate();
-                    },
+                  GetBuilder<ForgotPasswordController>(
+                    builder: (con) => AuthField(
+                      textController: newPassword,
+                      keyboardType: TextInputType.text,
+                      obscure: !con.passwordVisible,
+                      hintText: "enter a new password".tr,
+                      label: "password",
+                      prefixIconData: Icons.lock_outline,
+                      suffixIconData: con.passwordVisible ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                      onIconPress: () {
+                        con.togglePasswordVisibility(!con.passwordVisible);
+                      },
+                      validator: (val) {
+                        return validateInput(newPassword.text, 4, 50, "password");
+                      },
+                      onChanged: (val) {
+                        if (con.button2Pressed) con.secondFormKey.currentState!.validate();
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10),
-                  AuthField(
-                    textController: rePassword,
-                    keyboardType: TextInputType.text,
-                    obscure: true, //todo: make a button to show password
-                    hintText: "re enter new password".tr,
-                    label: "password",
-                    iconData: Icons.lock_outline,
-                    validator: (val) {
-                      return validateInput(rePassword.text, 4, 50, "password");
-                    },
-                    onChanged: (val) {
-                      if (fC.button2Pressed) fC.secondFormKey.currentState!.validate();
-                    },
+                  GetBuilder<ForgotPasswordController>(
+                    builder: (con) => AuthField(
+                      textController: rePassword,
+                      keyboardType: TextInputType.text,
+                      obscure: !con.rePasswordVisible,
+                      hintText: "re enter password".tr,
+                      label: "",
+                      prefixIconData: Icons.lock_outline,
+                      suffixIconData: con.rePasswordVisible ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                      onIconPress: () {
+                        con.toggleRePasswordVisibility(!con.rePasswordVisible);
+                      },
+                      validator: (val) {
+                        return validateInput(rePassword.text, 4, 50, "password");
+                      },
+                      onChanged: (val) {
+                        if (con.button2Pressed) con.secondFormKey.currentState!.validate();
+                      },
+                    ),
                   ),
                   const SizedBox(height: 25),
                   GetBuilder<ForgotPasswordController>(

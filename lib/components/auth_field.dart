@@ -8,7 +8,9 @@ class AuthField extends StatelessWidget {
     required this.textController,
     required this.keyboardType,
     required this.hintText,
-    required this.iconData,
+    this.prefixIconData,
+    this.suffixIconData,
+    this.onIconPress,
     required this.validator,
     required this.label,
     required this.onChanged,
@@ -19,7 +21,9 @@ class AuthField extends StatelessWidget {
   final TextInputType keyboardType;
   final String hintText;
   final String label;
-  final IconData iconData;
+  final IconData? prefixIconData;
+  final IconData? suffixIconData;
+  final void Function()? onIconPress;
   final bool obscure;
   final String? Function(String?) validator;
   final void Function(String) onChanged;
@@ -27,6 +31,7 @@ class AuthField extends StatelessWidget {
   //todo:create a prefix button for showing password
   @override
   Widget build(BuildContext context) {
+    ColorScheme cs = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
@@ -39,7 +44,11 @@ class AuthField extends StatelessWidget {
         decoration: InputDecoration(
           //floatingLabelBehavior: FloatingLabelBehavior.always,
           //label: Text(label),
-          suffixIcon: Icon(iconData, color: Colors.grey[500]),
+          prefixIcon: Icon(prefixIconData, color: Colors.grey[500]),
+          suffixIcon: GestureDetector(
+            onTap: onIconPress,
+            child: Icon(suffixIconData, color: cs.primary),
+          ),
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade400)),
           errorBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),

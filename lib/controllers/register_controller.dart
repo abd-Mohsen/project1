@@ -14,6 +14,20 @@ class RegisterController extends GetxController {
   bool _isLoadingRegister = false;
   bool get isLoadingRegister => _isLoadingRegister;
 
+  bool _passwordVisible = false;
+  bool get passwordVisible => _passwordVisible;
+  void togglePasswordVisibility(bool value) {
+    _passwordVisible = value;
+    update();
+  }
+
+  bool _rePasswordVisible = false;
+  bool get rePasswordVisible => _rePasswordVisible;
+  void toggleRePasswordVisibility(bool value) {
+    _rePasswordVisible = value;
+    update();
+  }
+
   void toggleLoadingRegister(bool value) {
     _isLoadingRegister = value;
     update();

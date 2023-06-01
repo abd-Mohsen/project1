@@ -19,6 +19,7 @@ void main() async {
 //todo: localize all text
 //todo: change fonts for both ar and en
 //todo: fix stutter when changing themes
+//todo: make an ios version
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

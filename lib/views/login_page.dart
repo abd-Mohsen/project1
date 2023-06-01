@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project1/controllers/login_controller.dart';
@@ -51,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     obscure: false,
                     hintText: "email".tr,
                     label: "email",
-                    iconData: Icons.email_outlined,
+                    prefixIconData: Icons.email_outlined,
                     validator: (val) {
                       return validateInput(email.text, 4, 100, "email");
                     },
@@ -60,19 +61,25 @@ class LoginPage extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 10),
-                  AuthField(
-                    textController: password,
-                    keyboardType: TextInputType.text,
-                    obscure: true, //todo: make a button to show password
-                    hintText: "password".tr,
-                    label: "password",
-                    iconData: Icons.lock_outline,
-                    validator: (val) {
-                      return validateInput(password.text, 4, 50, "password");
-                    },
-                    onChanged: (val) {
-                      if (lC.buttonPressed) lC.loginFormKey.currentState!.validate();
-                    },
+                  GetBuilder<LoginController>(
+                    builder: (con) => AuthField(
+                      textController: password,
+                      keyboardType: TextInputType.text,
+                      obscure: !con.passwordVisible,
+                      hintText: "password".tr,
+                      label: "password",
+                      prefixIconData: Icons.lock_outline,
+                      suffixIconData: con.passwordVisible ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                      onIconPress: () {
+                        con.togglePasswordVisibility(!con.passwordVisible);
+                      },
+                      validator: (val) {
+                        return validateInput(password.text, 4, 50, "password");
+                      },
+                      onChanged: (val) {
+                        if (con.buttonPressed) con.loginFormKey.currentState!.validate();
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Padding(

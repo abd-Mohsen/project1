@@ -33,7 +33,7 @@ class RemoteServices {
     );
     if (response.statusCode == 200) {
       return true;
-      //show a dialog to ask the user to delete his cart
+      //show a dialog to ask user to delete his cart
     } else {
       return false;
     }

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 ///custom themes
 
-//todo fix status bar color
 class MyThemes {
   static ThemeData myDarkMode = ThemeData.dark().copyWith(
     colorScheme: const ColorScheme(
@@ -45,7 +44,9 @@ class MyThemes {
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.white, // <-- SEE HERE
+        statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.dark,
+        systemStatusBarContrastEnforced: true,
         // statusBarBrightness: Brightness.light,
       ),
     ),

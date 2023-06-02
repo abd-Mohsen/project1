@@ -94,6 +94,7 @@ class MyLocale extends Translations {
           "completed": "completed",
           "for": "for",
           "items": "items",
+          "are you sure you want to quit the app?": "are you sure you want to quit the app?",
         },
         "ar": {
           "account": "الحساب الشخصي",
@@ -186,6 +187,7 @@ class MyLocale extends Translations {
           "completed": "تم بنجاح",
           "for": "من أجل",
           "items": "أغراض",
+          "are you sure you want to quit the app?": "هل تريد الخروج من التطبيق؟",
         }
       };
 }

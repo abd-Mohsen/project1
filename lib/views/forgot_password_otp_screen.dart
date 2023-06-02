@@ -87,16 +87,19 @@ class ForgotPasswordOTPScreen extends StatelessWidget {
               ),
               GetBuilder<ForgotPasswordController>(
                 //todo: fix button stretch when loading
-                builder: (con) => ElevatedButton(
-                    onPressed: () {
-                      con.resendOtp();
-                    },
-                    child: !con.isLoadingOtp
-                        ? Text(
-                            "resend otp".tr,
-                            style: kTextStyle20.copyWith(color: cs.onPrimary),
-                          )
-                        : SpinKitThreeBounce(color: cs.onPrimary, size: 20)),
+                builder: (con) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        con.resendOtp();
+                      },
+                      child: !con.isLoadingOtp
+                          ? Text(
+                              "resend otp".tr,
+                              style: kTextStyle20.copyWith(color: cs.onPrimary),
+                            )
+                          : SpinKitThreeBounce(color: cs.onPrimary, size: 20)),
+                ),
               ),
             ],
           ),

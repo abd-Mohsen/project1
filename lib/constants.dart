@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 String kLogoPath = "assets/images/logo.png";
 //todo: fix fonts
@@ -34,3 +36,28 @@ TextStyle kTextStyle14 = TextStyle(fontSize: 14, fontFamily: chooseFontFamily);
 TextStyle kTextStyle14Bold = TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: chooseFontFamily);
 
 Duration kTimeOutDuration = const Duration(seconds: 25);
+
+AlertDialog kCloseAppDialog() => AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      title: Text("are you sure you want to quit the app?".tr),
+      actions: [
+        TextButton(
+            onPressed: () {
+              SystemNavigator.pop();
+            },
+            child: Text(
+              "yes".tr,
+              style: kTextStyle20.copyWith(color: Colors.red),
+            )),
+        TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text(
+              "no".tr,
+              style: kTextStyle20.copyWith(color: Colors.blue),
+            )),
+      ],
+    );

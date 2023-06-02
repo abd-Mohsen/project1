@@ -145,7 +145,6 @@ class FullView extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
-                  //todo: fix card size
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisExtent: 250),
                   itemCount: con.filteredList(list).length,
                   itemBuilder: (context, i) => ProductCard(con.filteredList(list)[i], title),

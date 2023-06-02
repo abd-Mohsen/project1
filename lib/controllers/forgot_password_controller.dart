@@ -93,7 +93,6 @@ class ForgotPasswordController extends GetxController {
     }
   }
 
-  //todo:show a loading indicator on button
   void resendOtp() async {
     if (_isTimeUp) {
       toggleLoadingOtp(true);

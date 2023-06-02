@@ -88,7 +88,7 @@ class RegisterOTPScreen extends StatelessWidget {
               GetBuilder<RegisterController>(
                 //todo: fix stretched button
                 builder: (con) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: ElevatedButton(
                     onPressed: () {
                       con.resendOtp();

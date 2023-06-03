@@ -37,7 +37,7 @@ class FullView extends StatelessWidget {
                   backgroundColor: Colors.blueAccent,
                   label: Text(con.totalProductsAmount.toString()),
                   isLabelVisible: con.cart.isNotEmpty,
-                  child: const Icon(Icons.shopping_cart_outlined, size: 30),
+                  child: Icon(Icons.shopping_cart_outlined, size: 30, color: cs.onSurface),
                 ),
               ),
             ),

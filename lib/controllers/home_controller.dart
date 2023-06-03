@@ -48,9 +48,9 @@ class HomeController extends GetxController {
   void getAllProductsList() async {
     try {
       _productsList = (await RemoteServices.fetchAllProducts().timeout(kTimeOutDuration))!;
-      toggleLoadingAndFetchedProducts(true, true);
+      toggleLoadingAndFetchedProducts(true, false);
     } on TimeoutException {
-      toggleLoadingAndFetchedProducts(false, false);
+      toggleLoadingAndFetchedProducts(true, false);
     } catch (e) {
       //todo: show different message if it was a server error
       // Get.defaultDialog(
@@ -67,7 +67,7 @@ class HomeController extends GetxController {
       //       ),
       //     ));
     } finally {
-      toggleLoadingAndFetchedProducts(false, true);
+      //toggleLoadingAndFetchedProducts(false, true);
     }
   }
 
@@ -156,7 +156,7 @@ class HomeController extends GetxController {
     saveSearchHistoryInLocalStorage();
   }
 
-  void removeFromHistory(ProductModel product) {
+  void removeFromSearchHistory(ProductModel product) {
     _searchHistory.remove(product.id);
     update();
     saveSearchHistoryInLocalStorage();

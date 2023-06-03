@@ -101,7 +101,7 @@ class CartController extends GetxController {
   int get totalProductsAmount {
     int sum = 0;
     for (ProductModel product in _cart.values) {
-      sum += 1 * _quantity[product.id]!;
+      sum += _quantity[product.id]!;
     }
     return sum;
   }

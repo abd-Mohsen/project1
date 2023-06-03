@@ -216,6 +216,18 @@ class Settings extends StatelessWidget {
         isLoggedIn
             ? ListTile(
                 onTap: () {
+                  //
+                },
+                leading: const Icon(Icons.favorite, color: Colors.redAccent),
+                title: Text(
+                  "my wishlist".tr,
+                  style: kTextStyle20.copyWith(color: cs.onBackground),
+                ),
+              )
+            : const SizedBox.shrink(),
+        isLoggedIn
+            ? ListTile(
+                onTap: () {
                   Get.to(() => const OrdersPage());
                 },
                 leading: Icon(Icons.checklist, color: cs.onBackground),

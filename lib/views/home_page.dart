@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
                                     Icon(Icons.history_toggle_off, size: 100, color: cs.onBackground),
                                     Text(
                                       'No history yet',
-                                      style: kTextStyle24.copyWith(color: cs.background),
+                                      style: kTextStyle24.copyWith(color: cs.onBackground),
                                     ),
                                   ],
                                 ),
@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                                   return ListTile(
                                     onTap: () {
                                       Get.to(ProductView(product: entry.value, heroTag: ""));
-                                      con.removeFromHistory(entry.value);
+                                      con.removeFromSearchHistory(entry.value);
                                       con.addToSearchHistory(entry.value);
                                     },
                                     leading: const Icon(Icons.history),
@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                                     trailing: IconButton(
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
-                                        con.removeFromHistory(entry.value);
+                                        con.removeFromSearchHistory(entry.value);
                                       },
                                     ),
                                   );
@@ -164,7 +164,7 @@ class HomePage extends StatelessWidget {
                           onTap: () {
                             Get.off(ProductView(product: product, heroTag: ""));
                             if (hC.searchHistory.containsKey(product.id)) {
-                              hC.removeFromHistory(product);
+                              hC.removeFromSearchHistory(product);
                             }
                             hC.addToSearchHistory(product);
                           },

@@ -21,7 +21,6 @@ class MyLocale extends Translations {
           "cart": "Cart",
           "how to use Cart": "how to use Cart",
           "cart instructions": "- add the items you want to buy to the cart\n\n"
-              "- double tap on the product to remove it from cart\n\n"
               "- to clear all the cart press the delete icon in the top right hand corner\n\n"
               "- note  that the cart will be cleared automatically when you log out",
           "see more": "see more > ",
@@ -115,12 +114,11 @@ class MyLocale extends Translations {
           "how to use Cart": "كيفية استخدام عربة التسوق",
           "cart instructions": "-اضف المنتجات التي تريد شرائها لعربة التسوق\n\n"
               "-اضغط مرتين على المنتج لحذفه من عربة التسوق\n\n"
-              "-لمسح كل عربة التسوق اضغط على زر الحذف في الزاوية\n\n"
               "-انتبه انه سيتم مسح عربة التسوق تلقائياً عند تسجيل الخروج من حسابك",
           "see more": "رؤية المزيد> ",
           "for you": "مقترح لأجلك",
           "most popular": "رائج الآن",
-          "most liked": "الأكثر تقيماً",
+          "most liked": "الأكثر تقييماً",
           "Search products": "بحث عن منتج",
           "clear cart?": "مسح العربة؟ ",
           "by pressing ok your cart will be cleared": " بضغط ok ستمسح العربة",
@@ -128,7 +126,7 @@ class MyLocale extends Translations {
           "rate the product": "تقييم المنتج",
           "add to wishlist": "اضف للمفضلة",
           "submit": "تأكيد",
-          "give a rate": "إعط تققيماً",
+          "give a rate": "إعط تقييماً",
           'Welcome back!': 'اهلاً بعودتك',
           "not valid": "غير صالح",
           "email": "البريد الالكتروني",

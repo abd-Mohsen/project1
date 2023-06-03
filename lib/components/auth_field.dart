@@ -46,7 +46,7 @@ class AuthField extends StatelessWidget {
           prefixIcon: Icon(prefixIconData, color: Colors.grey[500]),
           suffixIcon: GestureDetector(
             onTap: onIconPress,
-            child: Icon(suffixIconData, color: cs.primary),
+            child: Icon(suffixIconData, color: cs.primary, size: 30),
           ),
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade400)),

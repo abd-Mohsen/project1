@@ -83,28 +83,29 @@ class Home extends StatelessWidget {
                       ],
                     ),
                   );
+                } else {
+                  List<ProductModel> newestProductsList = hC.productsList;
+                  newestProductsList.sort((a, b) => b.rating.rate.compareTo(a.rating.rate));
+                  return ListView(
+                    children: [
+                      ProductsRow(
+                        title: "for you".tr,
+                        heroTag: "4u",
+                        productsList: hC.productsList,
+                      ),
+                      ProductsRow(
+                        title: "most liked".tr,
+                        heroTag: "like",
+                        productsList: newestProductsList,
+                      ),
+                      // ProductsRow(
+                      //   title: "most liked".tr,
+                      //   heroTag: "like",
+                      //   productsList: mostLikedList,
+                      // ),
+                    ],
+                  );
                 }
-                List<ProductModel> newestProductsList = hC.productsList;
-                newestProductsList.sort((a, b) => b.rating.rate.compareTo(a.rating.rate));
-                return ListView(
-                  children: [
-                    ProductsRow(
-                      title: "for you".tr,
-                      heroTag: "4u",
-                      productsList: hC.productsList,
-                    ),
-                    ProductsRow(
-                      title: "most liked".tr,
-                      heroTag: "like",
-                      productsList: newestProductsList,
-                    ),
-                    // ProductsRow(
-                    //   title: "most liked".tr,
-                    //   heroTag: "like",
-                    //   productsList: mostLikedList,
-                    // ),
-                  ],
-                );
               }
             }),
           ),

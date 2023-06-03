@@ -1,16 +1,23 @@
 # project1
+an ecommerce mobile app made using flutter framework
+(add details later)
 
-A new Flutter project.
+## ScreenShots
+![Screenshot1](demos/1.jpg)
 
-## Getting Started
+![Screenshot2](demos/2.jpg)
 
-This project is a starting point for a Flutter application.
+![Screenshot3](demos/3.jpg)
 
-A few resources to get you started if this is your first Flutter project:
+![Screenshot4](demos/4.jpg)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Screenshot5](demos/5.jpg)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot6](demos/6.jpg)
+
+## Created by:
+- Abdalrahman Alsayad
+- Abdalrahman Alsuccari
+- Abdalrahman Mohsen
+
+

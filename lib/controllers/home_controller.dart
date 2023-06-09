@@ -36,21 +36,25 @@ class HomeController extends GetxController {
   List<ProductModel> get productsList => _productsList;
   bool _isLoadingProducts = true;
   bool get isLoadingProducts => _isLoadingProducts;
-  bool _isFetched = true;
+  bool _isFetched = false;
   bool get isFetched => _isFetched;
 
-  void toggleLoadingAndFetchedProducts(bool loading, bool fetched) {
-    _isLoadingProducts = loading;
-    _isFetched = fetched;
+  void setLoadingProduct(bool value) {
+    _isLoadingProducts = value;
+    update();
+  }
+
+  void setFetched(bool value) {
+    _isFetched = value;
     update();
   }
 
   void getAllProductsList() async {
     try {
       _productsList = (await RemoteServices.fetchAllProducts().timeout(kTimeOutDuration))!;
-      toggleLoadingAndFetchedProducts(true, false);
+      setFetched(true);
     } on TimeoutException {
-      toggleLoadingAndFetchedProducts(true, false);
+      setLoadingProduct(false);
     } catch (e) {
       //todo: show different message if it was a server error
       // Get.defaultDialog(
@@ -67,12 +71,13 @@ class HomeController extends GetxController {
       //       ),
       //     ));
     } finally {
-      //toggleLoadingAndFetchedProducts(false, true);
+      setLoadingProduct(false);
     }
   }
 
   void refreshAllProducts() {
-    toggleLoadingAndFetchedProducts(true, false);
+    setFetched(false);
+    setLoadingProduct(true);
     getAllProductsList();
   }
 

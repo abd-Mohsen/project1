@@ -20,6 +20,9 @@ void main() async {
 //todo: change fonts for both ar and en
 //todo: fix stutter when changing themes
 //todo: make an ios version
+//todo: release apk /android apk analyzer/dart dev tools
+//todo: use secure storage for token
+//todo: try BLoC
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

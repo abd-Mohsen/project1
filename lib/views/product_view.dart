@@ -17,6 +17,7 @@ class ProductView extends StatelessWidget {
     required this.heroTag,
   });
 
+  //todo: make sliver pic with sliver appbar
   //todo: make comments
   @override
   Widget build(BuildContext context) {

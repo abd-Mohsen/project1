@@ -18,7 +18,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void initState() {
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       _getStorage.hasData("token") ? Get.offAll(() => const HomePage()) : Get.offAll(() => LoginPage());
     });
     super.initState();

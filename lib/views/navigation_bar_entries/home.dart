@@ -16,6 +16,7 @@ class Home extends StatelessWidget {
     return Column(
       children: [
         //todo:make banners with fixed height and width
+        // todo: make banners sliver
         Expanded(
           flex: 5,
           child: Padding(

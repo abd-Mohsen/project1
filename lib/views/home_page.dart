@@ -14,6 +14,8 @@ import 'navigation_bar_entries/categories.dart';
 import 'navigation_bar_entries/home.dart';
 import 'navigation_bar_entries/settings.dart';
 
+// todo: make appbar sliver
+// todo: make a twitter like snackbars
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -73,6 +75,7 @@ class HomePage extends StatelessWidget {
                 if (hC.isFetched) {
                   showSearch(
                     context: context,
+                    //todo: make a request to change the list at every query update
                     delegate: SearchPage(
                       barTheme: Get.isDarkMode
                           ? MyThemes.myDarkMode
